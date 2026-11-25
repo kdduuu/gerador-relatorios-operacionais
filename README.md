@@ -8,11 +8,13 @@ Aplicação desktop para Windows desenvolvida em Python para automatizar a trans
 
 Desenvolvido durante minha atuação como Analista de Dados no setor de logística, para atender uma demanda real de operação. A versão original foi entregue para uso interno; esta adaptação de portfólio preserva o fluxo técnico, sem dados ou identidade visual da empresa.
 
+Este repositório contém exclusivamente a versão independente de portfólio, com histórico Git próprio. A implementação corporativa original é mantida separadamente e não é necessária para executar esta versão.
+
 **Status da solução original:** projeto entregue para uso interno e em manutenção. A distribuição em executável foi homologada em dois computadores Windows. Alterações no código-fonte exigem nova validação antes da distribuição.
 
 ## Demonstração
 
-![Interface com os indicadores de outubro e comparativo disponível](demonstracao/imagens/03-extracao-outubro.png)
+![Interface com os indicadores de setembro](demonstracao/imagens/02-extracao-setembro.png)
 
 Os exemplos abaixo utilizam exclusivamente dados operacionais fictícios. Os relatórios de saída foram gerados pela própria aplicação.
 
@@ -21,7 +23,7 @@ Os exemplos abaixo utilizam exclusivamente dados operacionais fictícios. Os rel
 | Setembro/2026 | [PDF fictício](demonstracao/entrada/operacao_ficticia_2026-09.pdf) | [Relatório de setembro](demonstracao/saida/Relatorio_Demonstrativo_2026-09.pdf) |
 | Outubro/2026 | [PDF fictício](demonstracao/entrada/operacao_ficticia_2026-10.pdf) | [Relatório de outubro com comparativo](demonstracao/saida/Relatorio_Demonstrativo_2026-10.pdf) |
 
-Outras capturas: [tela inicial](demonstracao/imagens/01-tela-inicial.png) · [prévia de setembro](demonstracao/imagens/02-extracao-setembro.png).
+Outra captura: [tela inicial](demonstracao/imagens/01-tela-inicial.png).
 
 No exemplo, setembro contém 200 pedidos e outubro contém 250. O histórico permite gerar automaticamente a terceira página do relatório de outubro, com a variação de volume entre as duas competências. Esses números são demonstrativos, não resultados reais da empresa.
 
@@ -89,14 +91,13 @@ Ambiente de referência: Windows 10 e Python 3.13. Na raiz do projeto, usando Po
 
 ```powershell
 py -3.13 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 Para executar uma demonstração isolada, sem reutilizar a configuração corporativa:
 
 ```powershell
-python -c "import os, tempfile; os.environ['LOCALAPPDATA'] = tempfile.mkdtemp(prefix='relatorios-demo-'); from src.interface import main; main()"
+.\.venv\Scripts\python.exe -c "import os, tempfile; os.environ['LOCALAPPDATA'] = tempfile.mkdtemp(prefix='relatorios-demo-'); from src.interface import main; main()"
 ```
 
 1. Crie duas pastas locais vazias fora do repositório, uma para o histórico e outra para os backups da demonstração.
@@ -109,17 +110,17 @@ O comando isolado cria uma configuração temporária por execução. Não utili
 ## Testes automatizados
 
 ```powershell
-python -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
 Também é possível executar com pytest:
 
 ```powershell
-python -m pip install pytest
-python -m pytest -q
+.\.venv\Scripts\python.exe -m pip install pytest
+.\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Na validação da versão de portfólio em 25/11/2026, em Linux com Python 3.13, foram aprovados **107 testes e 7 subtestes**, sem falhas. A versão original também havia sido validada no Windows. As suítes abrangem extração, indicadores, categorias dinâmicas, relatórios, histórico, backup, recuperação, comparativo e integração do fluxo.
+Na validação da versão de portfólio em 25/11/2026, foram aprovados **107 testes automatizados no Windows**, com Python 3.13, sem falhas. A geração dos relatórios fictícios de setembro e outubro, incluindo histórico, backup e comparativo mensal, também foi validada na interface. As suítes abrangem extração, indicadores, categorias dinâmicas, relatórios, histórico, backup, recuperação, comparativo e integração do fluxo.
 
 ## Confiabilidade e limitações
 
