@@ -1,0 +1,35 @@
+
+# Ambiente virtual
+.venv/
+
+# Dados e documentos corporativos
+dados/
+*.pdf
+*.xlsx
+*.csv
+
+# Arquivos temporarios do Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Configuracoes locais e segredos
+.env
+.env.*
+.vscode/
+
+# Arquivos gerados pelo executavel
+build/
+dist/
+
+# Logs
+*.log
+
+# Identidade visual local opcional
+assets/logo.png
+
+
+# Somente PDFs fictícios da demonstração são versionados
+!demonstracao/entrada/*.pdf
+!demonstracao/saida/**/*.pdf

@@ -1,0 +1,5 @@
+# Dependências diretas do Gerador de Relatórios Operacionais
+# Os módulos tkinter, pathlib, re e unittest já fazem parte do Python.
+PyMuPDF>=1.26,<3
+reportlab>=4.4,<5
+Pillow>=11,<13
